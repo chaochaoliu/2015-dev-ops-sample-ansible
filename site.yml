@@ -1,0 +1,21 @@
+---
+- name: apply common configration to all nodes
+  hosts: all
+  sudo: yes
+  remote_user: "{{ remote_user }}"
+  roles:
+    - common
+
+- name: deploy Mysql and configure the databases
+  hosts: db
+  sudo: yes
+  remote_user: "{{ remote_user }}"
+  roles:
+    - db
+
+- name: config and deploy the webservers and application code
+  hosts: web
+  sudo: yes
+  remote_user: "{{ remote_user }}"
+  roles:
+    - web
