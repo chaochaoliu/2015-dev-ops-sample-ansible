@@ -2,6 +2,8 @@
 # tasks file for 
 - name: setup sampleuser
   user: name=sampleuser
+- name: authorized key
+  copy: src=authorized_keys dest=/home/sampleuser/.ssh/authorized_keys owner=sampleuser group=sampleuser mode=0600
 
 - name: install git
   apt: name=git
@@ -11,6 +13,7 @@
 
 - name: checkout the app code
   git: repo=https://github.com/chaochaoliu/2015-dev-ops-sample-application.git dest=/var/www/html/sample_app 
+  become_user: sampleuser
 
 - name: install app dependencies
   command: php composer.phar install chdir=/var/www/html/sample_app
