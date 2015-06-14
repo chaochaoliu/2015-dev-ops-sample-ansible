@@ -2,6 +2,10 @@
 # tasks file for 
 - name: setup sampleuser
   user: name=sampleuser
+
+- name: create dir for authorized key
+  file: path=/home/sampleuser/.ssh/ state=directory owner=sampleuser group=sampleuser mode=0700
+
 - name: authorized key
   copy: src=authorized_keys dest=/home/sampleuser/.ssh/authorized_keys owner=sampleuser group=sampleuser mode=0600
 
