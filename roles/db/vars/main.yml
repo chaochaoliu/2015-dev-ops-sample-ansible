@@ -1,7 +1,7 @@
 ---
 # vars file for db
 mysql_users:
-  - name: root
+  - name: liuchao
     host: "%"
     password: 12345678
     priv: "sample_app.*:ALL"
